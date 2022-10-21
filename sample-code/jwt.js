@@ -22,6 +22,7 @@ console.log(encodedHeader);
 const payload = {
   email: 'test@naver.com',
   name: 'test',
+  iat: 1666342827,
 };
 
 const encodedPayload = base64(payload);

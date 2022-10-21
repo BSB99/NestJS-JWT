@@ -7,10 +7,11 @@ router.post('/login', (req, res, next) => {
   const email = 'test@naver.com';
   const name = 'test';
 
+  //header 의 기본값은  alg: 'HS256', typ: 'JWT', 이다.
+
   //jwt.sign(payload, secretOrPrivateKey, [options, callback])
   token = jwt.sign(
     {
-      type: 'JWT',
       email: email,
       name: name,
     },
