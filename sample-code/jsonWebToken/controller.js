@@ -1,0 +1,32 @@
+const express = require('express');
+const router = express.Router();
+const jwt = require('jsonwebtoken');
+const SECRET_KEY = 'SECRET_KEY';
+
+router.post('/login', (req, res, next) => {
+  const email = 'test@naver.com';
+  const name = 'test';
+
+  //jwt.sign(payload, secretOrPrivateKey, [options, callback])
+  token = jwt.sign(
+    {
+      type: 'JWT',
+      email: email,
+      name: name,
+    },
+    SECRET_KEY,
+    // {
+    //   expiresIn: '15m', // 만료시간 15분
+    //   issuer: '토큰발급자',
+    // },
+  );
+
+  //response
+  return res.status(200).json({
+    code: 200,
+    message: '토큰이 발급되었습니다.',
+    token: token,
+  });
+});
+
+module.exports = router;
